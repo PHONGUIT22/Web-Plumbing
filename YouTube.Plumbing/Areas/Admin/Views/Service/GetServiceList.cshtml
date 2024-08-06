@@ -1,25 +1,22 @@
-﻿@model List<PortfolioListVM>
+﻿@model List<ServiceListVM>
 @{
-    ViewData["Title"] = "GetPortfolioList";
+    ViewData["Title"] = "GetServiceList";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
-<h5 class="card-title">Portfolios</h5>
+<h5 class="card-title">Services</h5>
 <nav>
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="#">Portfolios</a></li>
+        <li class="breadcrumb-item"><a href="#">Services</a></li>
     </ol>
 </nav>
 <div class="card">
     <div class="card-body">
-
-
         <!-- Table with hoverable rows -->
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Name</th>
-                    <th scope="col">Category</th>
                     <th scope="col">Create Date</th>
                     <th scope="col">Update Date</th>
                     <th scope="col">Edit</th>
@@ -30,21 +27,17 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@item.Title</td>
-                        <td>@item.Category.Name</td>
+                        <td>@item.Name</td>
                         <td>@item.CreateDate</td>
                         <td>@item.UpdateDate</td>
-                        <td><a asp-area="Admin" asp-controller="Portfolio" asp-action="UpdatePortfolio" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-warning btn-sm">Edit</a></td>
-                        <td><a asp-area="Admin" asp-controller="Portfolio" asp-action="DeletePortfolio" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-danger btn-sm">Delete</a></td>
+                        <td><a asp-area="Admin" asp-controller="Service" asp-action="UpdateService" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-warning btn-sm">Edit</a></td>
+                        <td><a asp-area="Admin" asp-controller="Service" asp-action="DeleteService" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-danger btn-sm">Delete</a></td>
                     </tr>
                 }
 
             </tbody>
         </table>
         <!-- End Table with hoverable rows -->
-        <a asp-area="Admin" asp-controller="Portfolio" asp-action="AddPortfolio" class="btn btn-success btn-sm">Add Portfolio</a>
+        <a asp-area="Admin" asp-controller="Service" asp-action="AddService" class="btn btn-success btn-sm">Add Service</a>
     </div>
 </div>
-
-
-

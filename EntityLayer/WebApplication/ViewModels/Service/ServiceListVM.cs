@@ -13,8 +13,6 @@ namespace EntityLayer.WebApplication.ViewModels.Service
 
         public string? UpdateDate { get; set; }
         public string Name { get; set; } = null!;
-        public string Description { get; set; } = null!;
-
-        public string Icon { get; set; } = null!;
+        
     }
 }

@@ -1,16 +1,16 @@
-﻿@model HomePageAddVM
+﻿@model ServiceAddVM
 @{
-    ViewData["Title"] = "AddHomePage";
+    ViewData["Title"] = "AddService";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="mb-2">
-    <h5 class="card-title">Add New HomePage</h5>
+    <h5 class="card-title">Add New Service </h5>
 
     <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
-            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="HomePage" asp-action="GetHomePageList">HomePage Us </a></li>
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Service" asp-action="GetServiceList">Service </a></li>
 
             <li class="breadcrumb-item"><a href="#">Add</a></li>
         </ol>
@@ -20,24 +20,25 @@
 <div class="card">
     <div class="card-body">
         <!-- Floating Labels Form -->
-        <form asp-area="Admin" asp-controller="HomePage" asp-action="AddHomePage" method="post" class="row g-3" enctype="multipart/form-data">
+        <form asp-area="Admin" asp-controller="Service" asp-action="AddService" method="post" class="row g-3" enctype="multipart/form-data">
 
             <div class="col-md-12 ">
                 <div class="form-floating">
-                    <input asp-for="Header" type="text" class="form-control" placeholder="Header">
-                    <label asp-for="Header">Header</label>
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Name">
+                    <label asp-for="Name">Name</label>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="form-floating">
-                    <input asp-for="VideoLink" type="text" class="form-control" placeholder="Video Link">
-                    <label asp-for="VideoLink">VideoLink</label>
-                </div>
-            </div>
+            
             <div class="col-md-12">
                 <div class="form-floating">
                     <textarea asp-for="Description" type="text" class="form-control" placeholder="Description"></textarea>
                     <label asp-for="Description">Description</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-floating">
+                    <textarea asp-for="Icon" type="text" class="form-control" placeholder="Icon"></textarea>
+                    <label asp-for="Icon">Icon</label>
                 </div>
             </div>
             <div class="text-center">
@@ -48,4 +49,3 @@
 
     </div>
 </div>
-
