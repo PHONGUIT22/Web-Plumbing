@@ -1,0 +1,65 @@
+﻿@model List<ContactListVM>
+@{
+    ViewData["Title"] = "GetContactList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h5 class="card-title">Contact Us</h5>
+
+<nav>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="#">Contact Us</a></li>
+    </ol>
+</nav>
+
+
+<div class="card">
+    <div class="card-body">
+
+
+        <!-- Table with hoverable rows -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Location</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Call</th>
+                    <th scope="col">Map</th>
+
+                    <th scope="col">Create Date</th>
+                    <th scope="col">Update Date</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Location</td>
+                        <td>@item.Email</td>
+                        <td>@item.Call</td>
+                        @if(  item.Map==null || item.Map == string.Empty)
+                        {
+                            <td>Not Assigned</td>
+                        }
+                        else
+                        {
+                            <td> Assigned</td>
+                        }
+                        <td>@item.CreateDate</td>
+                        <td>@item.UpdateDate</td>
+                        <td><a asp-area="Admin" asp-controller="Contact" asp-action="UpdateContact" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-warning btn-sm">Edit</a></td>
+                        <td><a asp-area="Admin" asp-controller="Contact" asp-action="DeleteContact" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-danger btn-sm">Delete</a></td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <!-- End Table with hoverable rows -->
+        <a asp-area="Admin" asp-controller="Contact" asp-action="AddContact" class="btn btn-success btn-sm">Add Contact</a>
+
+    </div>
+</div>
+

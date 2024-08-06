@@ -1,0 +1,83 @@
+﻿@model AboutUpdateVM
+@{
+    ViewData["Title"] = "UpdateAbout";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="mb-2">
+    <h5 class="card-title">Update  About Us</h5>
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="About" asp-action="GetAboutList">About Us </a></li>
+
+
+            <li class="breadcrumb-item"><a href="#">Update</a></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <!-- Floating Labels Form -->
+        <form asp-area="Admin" asp-controller="About" method="post" class="row g-3" enctype="multipart/form-data">
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="RowVersion" />
+            <input type="hidden" asp-for="FileName" value="test" />
+            <input type="hidden" asp-for="FileType" value="test" />
+
+            <div class="col-md-12 ">
+                <div class="form-floating">
+                    <input asp-for="Header" type="text" class="form-control" placeholder="Header">
+                    <label asp-for="Header">Header</label>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-floating">
+                    <textarea asp-for="Description" type="text" class="form-control" placeholder="Description"></textarea>
+                    <label asp-for="Description">Description</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-floating">
+                    <input asp-for="Clients" type="number" class="form-control" placeholder="Clients">
+                    <label asp-for="Clients">Clients</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-floating">
+                    <input asp-for="HoursOfSupport" type="number" class="form-control" placeholder="Hours Of Support">
+                    <label asp-for="HoursOfSupport">Hours Of Support</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-floating">
+                    <input asp-for="HardWorkers" type="number" class="form-control" placeholder="HardWorkers">
+                    <label asp-for="HardWorkers">HardWorkers</label>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-floating">
+                    <input asp-for="Projects" type="number" class="form-control" placeholder="Projects">
+                    <label asp-for="Projects">Projects</label>
+                </div>
+            </div>
+
+            <partial name="UpdateSocialMediaPartialView/_SocialMediaView" />
+
+            <div class="row-mb-12">
+                <label asp-for="Photo" class="col-md-4 col-lg-3 col-form-label"></label>
+                <div class="col-md-8 col-lg-9">
+                    <input asp-for="Photo" accept="image/*" type="file" class="form-control">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form><!-- End floating Labels Form -->
+
+    </div>
+</div>

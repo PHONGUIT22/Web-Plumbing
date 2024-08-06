@@ -1,0 +1,123 @@
+﻿
+@model List<AboutListVM>
+@{
+    ViewData["Title"] = "GetAboutList";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+        <h5 class="card-title">About Us</h5>
+
+        <nav>
+            <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">About Us</a></li>
+            </ol>
+        </nav>
+    
+
+<div class="card">
+    <div class="card-body">
+        
+
+        <!-- Table with hoverable rows -->
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Header</th>
+                    <th scope="col">Create Date</th>
+                    <th scope="col">Update Date</th>
+                    <th scope="col">Delete</th>
+                    <!-- <th scope="col">Edit</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@item.Header</td>
+                        <td>@item.CreateDate</td>
+                        <td>@item.UpdateDate</td>
+                        <td><a asp-area="Admin" asp-controller="About" asp-action="DeleteAbout" asp-route-id="@item.Id" data-id="@item.Id" class="btn btn-danger btn-sm">Delete</a></td>
+                    </tr>
+                }
+                
+            </tbody>
+        </table>
+        <!-- End Table with hoverable rows -->
+
+    </div>
+</div>
+
+@foreach(var item in Model)
+{
+<section class="section profile">
+    <div class="row">
+        <div class="col-xl-4">
+
+            <div class="card">
+                <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+
+                    <img src="@item.FileName" alt="Profile" class="rounded-circle">
+                    
+                    <div class="social-links mt-2">
+                        <a href="@item.SocialMedia.Twitter" class="twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="@item.SocialMedia.FaceBook" class="facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="@item.SocialMedia.Instagram" class="instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="@item.SocialMedia.LinkedIn" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xl-8">
+
+            <div class="card">
+                <div class="card-body pt-3">
+                    <!-- Bordered Tabs -->
+                    
+                    <div class="tab-content pt-2">
+                        
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                                <h5 class="card-title">About Us</h5>
+                                <p class="small fst-italic">@item.Description</p>
+
+                                <h5 class="card-title">Details</h5>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label ">Header</div>
+                                    <div class="col-lg-9 col-md-8">@item.Header</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Client</div>
+                                    <div class="col-lg-9 col-md-8">@item.Clients</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Projects</div>
+                                    <div class="col-lg-9 col-md-8">@item.Projects</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Hours of Support</div>
+                                    <div class="col-lg-9 col-md-8">@item.HoursOfSupport</div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-4 label">Hard Workers</div>
+                                    <div class="col-lg-9 col-md-8">@item.HardWorkers</div>
+                                </div>
+                                <a asp-area="Admin" asp-controller="About"asp-action="UpdateAbout" data-id="@item.Id" asp-route-id="@item.Id" class="btn btn-info btn-sm">Edit</a>
+                            </div>
+                    </div><!-- End Bordered Tabs -->
+
+                </div>
+            </div>
+                
+        </div>
+    </div>
+</section>
+}
+<a asp-area="Admin" asp-controller="About" asp-action="AddAbout" class="btn btn-success btn-sm">Add About Us</a>
