@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace EntityLayer.WebApplication.ViewModels.Team
         public int Id { get; set; }
 
         public string? UpdateDate { get; set; }
+
         public byte[] RowVersion { get; set; } = null!;
         public string FullName { get; set; } = null!;
 
@@ -21,5 +23,7 @@ namespace EntityLayer.WebApplication.ViewModels.Team
         public string? LinkedIn { get; set; }
         public string? FaceBook { get; set; }
         public string? Instagram { get; set; }
+        
+        public IFormFile Photo { get; set; } = null!;
     }
 }
