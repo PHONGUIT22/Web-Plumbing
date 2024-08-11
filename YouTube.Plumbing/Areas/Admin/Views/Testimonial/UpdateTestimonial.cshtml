@@ -1,0 +1,58 @@
+﻿@model TestimonialUpdateVM
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="mb-2">
+    <h5 class="card-title">Update Testimonial </h5>
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="Testimonial" asp-action="GetTestimonialList">Testimonial </a></li>
+
+            <li class="breadcrumb-item"><a href="#">Update</a></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <!-- Floating Labels Form -->
+        <form asp-area="Admin" asp-controller="Testimonial" asp-action="UpdateTestimonial" method="post" class="row g-3" enctype="multipart/form-data">
+            <input type="hidden" asp-for="FileName" value="test" />
+            <input type="hidden" asp-for="FileType" value="test" />
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="RowVersion" />
+            <div class="col-md-12 ">
+                <div class="form-floating">
+                    <input asp-for="FullName" type="text" class="form-control" placeholder="Name">
+                    <label asp-for="FullName">Name</label>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-floating">
+                    <textarea asp-for="Title" type="text" class="form-control" placeholder="Title"></textarea>
+                    <label asp-for="Title">Title</label>
+                </div>
+            </div>
+            <div class="form-floating">
+                <textarea asp-for="Comment" type="text" class="form-control" style="height:150px" placeholder="Comment"></textarea>
+                <label asp-for="Comment">Comment</label>
+            </div>
+            <div class="row-mb-12">
+                <label asp-for="Photo" class="col-md-4 col-lg-3 col-form-label"></label>
+                <div class="col-md-8 col-lg-9">
+                    <input asp-for="Photo" accept="image/*" type="file" class="form-control">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="reset" class="btn btn-secondary">Reset</button>
+            </div>
+        </form><!-- End floating Labels Form -->
+
+    </div>
+</div>
