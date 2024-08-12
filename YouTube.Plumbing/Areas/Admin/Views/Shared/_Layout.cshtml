@@ -53,13 +53,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link " asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
+
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="Admin" asp-controller="About" asp-action="GetAboutList">
               <i class="bi bi-building"></i>
               <span>About</span>
           </a>
@@ -67,43 +68,43 @@
 
       
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="Admin" asp-controller="HomePage" asp-action="GetHomePageList">
               <i class="bi bi-house"></i>
               <span>Home Page</span>
           </a>
       </li> <!--end Home Page section-->
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="Admin" asp-controller="Service" asp-action="GetServiceList">
               <i class="bi bi-sliders2-vertical"></i>
               <span>Service</span>
           </a>
       </li> <!--end Service section-->
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="Admin" asp-controller="Team" asp-action="GetTeamList">
               <i class="bi bi-people-fill"></i>
               <span>Team</span>
           </a>
       </li> <!--end Team section-->
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="Admin" asp-controller="Testimonial" asp-action="GetTestimonialList">
               <i class="bi bi-chat-left-dots"></i>
               <span>Testimonial</span>
           </a>
       </li> <!--end Testimonial section-->
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="Admin" asp-controller="Category" asp-action="GetCategoryList">
               <i class="bi bi-tags"></i>
               <span>Categories</span>
           </a>
       </li> <!--end Categories section-->
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="Admin" asp-controller="Portfolio" asp-action="GetPortfolioList">
               <i class="bi bi-image"></i>
               <span>Portfolio</span>
           </a>
       </li> <!--end Portfolio section-->
       <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+                <a class="nav-link collapsed" asp-area="Admin" asp-controller="Contact" asp-action="GetContactList">
               <i class="bi bi-envelope"></i>
               <span>Contact</span>
           </a>
