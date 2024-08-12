@@ -1,6 +1,6 @@
 ﻿using EntityLayer.WebApplication.ViewModels.Contact;
 using Microsoft.AspNetCore.Mvc;
-using ServiceLayer.Services.Abstract;
+using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
