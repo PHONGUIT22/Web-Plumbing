@@ -25,7 +25,6 @@
     <Folder Include="Messages\WebApplication\" />
     <Folder Include="Middlewares\Identity\" />
     <Folder Include="Middlewares\WebApplication\" />
-    <Folder Include="TEST\" />
     <Folder Include="Services\Identity\Abstract\" />
     <Folder Include="Services\Identity\Concrete\" />
   </ItemGroup>
