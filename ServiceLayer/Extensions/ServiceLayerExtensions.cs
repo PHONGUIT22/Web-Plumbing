@@ -6,6 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using ServiceLayer.Services.WebApplication.Abstract;
+using FluentValidation.AspNetCore;
+using FluentValidation;
+using ServiceLayer.FluentValidation.WebApplication.HomePageValidation;
 
 namespace ServiceLayer.Extensions
 {
@@ -23,6 +26,11 @@ namespace ServiceLayer.Extensions
                     services.AddScoped(isServiceType, serviceType);
                 }
             }
+            services.AddFluentValidationAutoValidation(opt =>
+            {
+                opt.DisableDataAnnotationsValidation=true;
+            });
+            services.AddValidatorsFromAssemblyContaining<HomePageAddValidation>();
             return services;
         }
     }
