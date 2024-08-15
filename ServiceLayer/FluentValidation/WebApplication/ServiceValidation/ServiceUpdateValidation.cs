@@ -1,5 +1,6 @@
 ﻿using EntityLayer.WebApplication.ViewModels.Service;
 using FluentValidation;
+using ServiceLayer.Messages.WebApplication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,17 +14,17 @@ namespace ServiceLayer.FluentValidation.WebApplication.ServiceValidation
         public ServiceUpdateValidation()
         {
             RuleFor(x => x.Name)
-               .NotEmpty()
-               .NotNull()
-               .MaximumLength(200);
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Name"))
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Name"))
+                .MaximumLength(200).WithMessage(ValidationMessages.MaximumCharacterAllowence("Name", 200));
             RuleFor(x => x.Description)
-                .NotEmpty()
-                .NotNull()
-                .MaximumLength(2000);
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Description"))
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Description"))
+                .MaximumLength(2000).WithMessage(ValidationMessages.MaximumCharacterAllowence("Description", 2000));
             RuleFor(x => x.Icon)
-                .NotEmpty()
-                .NotNull()
-                .MaximumLength(100);
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Icon"))
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Icon"))
+                .MaximumLength(100).WithMessage(ValidationMessages.MaximumCharacterAllowence("Icon", 100));
         }
     }
 }

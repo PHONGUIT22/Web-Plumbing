@@ -1,5 +1,6 @@
 ﻿using EntityLayer.WebApplication.ViewModels.Portfolio;
 using FluentValidation;
+using ServiceLayer.Messages.WebApplication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,18 +14,9 @@ namespace ServiceLayer.FluentValidation.WebApplication.PortfolioValidation
         public PortfolioUpdateValidation()
         {
             RuleFor(x => x.Title)
-                .NotEmpty()
-                .NotNull()
-                .MaximumLength(200);
-            RuleFor(x => x.FileName)
-                .NotEmpty()
-                .NotNull();
-            RuleFor(x => x.FileType)
-                .NotEmpty()
-                .NotNull();
-            RuleFor(x => x.Photo)
-                .NotEmpty()
-                .NotNull();
+               .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Title"))
+               .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Title"))
+               .MaximumLength(200).WithMessage(ValidationMessages.MaximumCharacterAllowence("Title", 200));
         }
     }
 }

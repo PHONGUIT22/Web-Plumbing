@@ -1,5 +1,6 @@
 ﻿using EntityLayer.WebApplication.ViewModels.Category;
 using FluentValidation;
+using ServiceLayer.Messages.WebApplication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,10 @@ namespace ServiceLayer.FluentValidation.WebApplication.CategoryValidation
     {
         public CategoryUpdateValidation()
         {
-            RuleFor(x => x.Name).NotEmpty().NotNull().MaximumLength(50);
+            RuleFor(x => x.Name)
+              .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Name"))
+              .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Name"))
+              .MaximumLength(50).WithMessage(ValidationMessages.MaximumCharacterAllowence("Name", 50));
 
         }
     }
