@@ -1,38 +1,38 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Automapper\Identity\" />
-    <Folder Include="Exception\Identity\" />
-    <Folder Include="Exception\WebApplication\" />
-    <Folder Include="Extensions\Identity\" />
-    <Folder Include="Extensions\WebApplication\" />
-    <Folder Include="Filters\Identity\" />
-    <Folder Include="Filters\WebApplication\" />
-    <Folder Include="FluentValidation\Identity\" />
-    <Folder Include="Helpers\Identity\" />
-    <Folder Include="Helpers\WebApplication\" />
-    <Folder Include="Messages\Identity\" />
-    <Folder Include="Middlewares\Identity\" />
-    <Folder Include="Middlewares\WebApplication\" />
-    <Folder Include="test\" />
-    <Folder Include="Services\Identity\Abstract\" />
-    <Folder Include="Services\Identity\Concrete\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Automapper\Identity\" />
+		<Folder Include="Exception\Identity\" />
+		<Folder Include="Exception\WebApplication\" />
+		<Folder Include="Extensions\Identity\" />
+		<Folder Include="Extensions\WebApplication\" />
+		<Folder Include="Filters\Identity\" />
+		<Folder Include="Filters\WebApplication\" />
+		<Folder Include="FluentValidation\Identity\" />
+		<Folder Include="Helpers\Identity\" />
+		<Folder Include="Helpers\WebApplication\" />
+		<Folder Include="Messages\Identity\" />
+		<Folder Include="Middlewares\Identity\" />
+		<Folder Include="Middlewares\WebApplication\" />
+		<Folder Include="test\" />
+		<Folder Include="Services\Identity\Abstract\" />
+		<Folder Include="Services\Identity\Concrete\" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="13.0.1" />
+		<PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
+	</ItemGroup>
 
 </Project>

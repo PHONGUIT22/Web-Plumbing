@@ -9,6 +9,7 @@ using ServiceLayer.Services.WebApplication.Abstract;
 using FluentValidation.AspNetCore;
 using FluentValidation;
 using ServiceLayer.FluentValidation.WebApplication.HomePageValidation;
+using ServiceLayer.Extensions.Identity;
 
 namespace ServiceLayer.Extensions
 {
@@ -16,6 +17,7 @@ namespace ServiceLayer.Extensions
     {
         public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services)
         {
+            services.LoadIdentityExtensions();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.Name.EndsWith("Service"));
             foreach (var serviceType in types)

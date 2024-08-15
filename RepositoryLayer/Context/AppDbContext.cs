@@ -1,4 +1,6 @@
-﻿using EntityLayer.WebApplication.Entities;
+﻿using EntityLayer.Identity.Entities;
+using EntityLayer.WebApplication.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace RepositoryLayer.Context
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<AppUser, AppRole,string>
     {
         public AppDbContext(DbContextOptions options) : base(options)
         {
