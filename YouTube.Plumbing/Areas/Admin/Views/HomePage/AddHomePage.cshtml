@@ -21,23 +21,26 @@
     <div class="card-body">
         <!-- Floating Labels Form -->
         <form asp-area="Admin" asp-controller="HomePage" asp-action="AddHomePage" method="post" class="row g-3" enctype="multipart/form-data">
-
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="col-md-12 ">
                 <div class="form-floating">
                     <input asp-for="Header" type="text" class="form-control" placeholder="Header">
                     <label asp-for="Header">Header</label>
+                    <span asp-validation-for="Header" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
                     <input asp-for="VideoLink" type="text" class="form-control" placeholder="Video Link">
                     <label asp-for="VideoLink">VideoLink</label>
+                    <span asp-validation-for="VideoLink" class="text-danger"></span>
                 </div>
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
                     <textarea asp-for="Description" type="text" class="form-control" placeholder="Description"></textarea>
                     <label asp-for="Description">Description</label>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
             </div>
             <div class="text-center">

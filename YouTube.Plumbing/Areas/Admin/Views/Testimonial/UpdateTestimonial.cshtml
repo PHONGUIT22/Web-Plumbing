@@ -25,10 +25,14 @@
             <input type="hidden" asp-for="FileType" value="test" />
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="RowVersion" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <div class="col-md-12 ">
                 <div class="form-floating">
                     <input asp-for="FullName" type="text" class="form-control" placeholder="Name">
                     <label asp-for="FullName">Name</label>
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+
                 </div>
             </div>
 
@@ -36,16 +40,22 @@
                 <div class="form-floating">
                     <textarea asp-for="Title" type="text" class="form-control" placeholder="Title"></textarea>
                     <label asp-for="Title">Title</label>
+                    <span asp-validation-for="Title" class="text-danger"></span>
+
                 </div>
             </div>
             <div class="form-floating">
                 <textarea asp-for="Comment" type="text" class="form-control" style="height:150px" placeholder="Comment"></textarea>
                 <label asp-for="Comment">Comment</label>
+                <span asp-validation-for="Comment" class="text-danger"></span>
+
             </div>
             <div class="row-mb-12">
                 <label asp-for="Photo" class="col-md-4 col-lg-3 col-form-label"></label>
                 <div class="col-md-8 col-lg-9">
                     <input asp-for="Photo" accept="image/*" type="file" class="form-control">
+                    <span asp-validation-for="Photo" class="text-danger"></span>
+
                 </div>
             </div>
             <div class="text-center">

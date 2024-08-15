@@ -3,6 +3,7 @@
 <div class="col-md-3">
     <div class="form-floating">
         <input asp-for="SocialMedia.Twitter" type="text" class="form-control" placeholder="Twitter">
+        <span asp-validation-for="SocialMedia.Twitter" class="text-danger"></span>
         <label asp-for="SocialMedia.Twitter">Twitter</label>
     </div>
 </div>
@@ -10,17 +11,23 @@
     <div class="form-floating">
         <input asp-for="SocialMedia.FaceBook" type="text" class="form-control" placeholder="FaceBook">
         <label asp-for="SocialMedia.FaceBook">FaceBook</label>
+        <span asp-validation-for="SocialMedia.FaceBook" class="text-danger"></span>
+
     </div>
 </div>
 <div class="col-md-3">
     <div class="form-floating">
         <input asp-for="SocialMedia.Instagram" type="text" class="form-control" placeholder="Instagram">
         <label asp-for="SocialMedia.Instagram">Instagram</label>
+        <span asp-validation-for="SocialMedia.Instagram" class="text-danger"></span>
+
     </div>
 </div>
 <div class="col-md-3">
     <div class="form-floating">
         <input asp-for="SocialMedia.LinkedIn" type="text" class="form-control" placeholder="LinkedIn">
         <label asp-for="SocialMedia.LinkedIn">LinkedIn</label>
+        <span asp-validation-for="SocialMedia.LinkedIn" class="text-danger"></span>
+
     </div>
 </div>
