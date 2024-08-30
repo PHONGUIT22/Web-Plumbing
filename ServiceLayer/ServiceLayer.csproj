@@ -11,14 +11,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Automapper\Identity\" />
 		<Folder Include="Exception\Identity\" />
 		<Folder Include="Exception\WebApplication\" />
 		<Folder Include="Extensions\Identity\" />
 		<Folder Include="Extensions\WebApplication\" />
 		<Folder Include="Filters\Identity\" />
 		<Folder Include="Filters\WebApplication\" />
-		<Folder Include="FluentValidation\Identity\" />
 		<Folder Include="Helpers\Identity\" />
 		<Folder Include="Helpers\WebApplication\" />
 		<Folder Include="Messages\Identity\" />
