@@ -17,7 +17,6 @@
 		<Folder Include="Extensions\WebApplication\" />
 		<Folder Include="Filters\Identity\" />
 		<Folder Include="Filters\WebApplication\" />
-		<Folder Include="Helpers\Identity\" />
 		<Folder Include="Helpers\WebApplication\" />
 		<Folder Include="Messages\Identity\" />
 		<Folder Include="Middlewares\Identity\" />

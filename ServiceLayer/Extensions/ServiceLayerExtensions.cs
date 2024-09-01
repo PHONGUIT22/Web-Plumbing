@@ -10,14 +10,15 @@ using FluentValidation.AspNetCore;
 using FluentValidation;
 using ServiceLayer.FluentValidation.WebApplication.HomePageValidation;
 using ServiceLayer.Extensions.Identity;
+using Microsoft.Extensions.Configuration;
 
 namespace ServiceLayer.Extensions
 {
     public static class ServiceLayerExtensions
     {
-        public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services)
+        public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services, IConfiguration config)
         {
-            services.LoadIdentityExtensions();
+            services.LoadIdentityExtensions(config);
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.Name.EndsWith("Service"));
             foreach (var serviceType in types)

@@ -5,7 +5,8 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using ServiceLayer.Helpers.Identity;
+using ServiceLayer.Helpers.Identity.EmailHelper;
+using ServiceLayer.Helpers.Identity.ModelStateHelper;
 namespace YouTube.Plumbing.Controllers
 {
     public class AuthenticationController : Controller
@@ -14,15 +15,19 @@ namespace YouTube.Plumbing.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IValidator<SignUpVM> _signUpValidator;
         private readonly IValidator<LogInVM> _logInValidator;
+        private readonly IValidator<ForgotPasswordVM> _forgotPasswordValidator;
         private readonly IMapper _iMapper;
+        private readonly IEmailSendMethod _emailSendMethod;
 
-        public AuthenticationController(UserManager<AppUser> userManager, IValidator<SignUpVM> signUpValidator, IMapper iMapper, SignInManager<AppUser> signInManager, IValidator<LogInVM> logInValidator)
+        public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator, IMapper iMapper, IEmailSendMethod emailSendMethod)
         {
             _userManager = userManager;
-            _signUpValidator = signUpValidator;
-            _iMapper = iMapper;
             _signInManager = signInManager;
+            _signUpValidator = signUpValidator;
             _logInValidator = logInValidator;
+            _forgotPasswordValidator = forgotPasswordValidator;
+            _iMapper = iMapper;
+            _emailSendMethod = emailSendMethod;
         }
 
         [HttpGet]
@@ -49,6 +54,8 @@ namespace YouTube.Plumbing.Controllers
             }
             return RedirectToAction("LogIn", "Authentication");
         }
+
+
         [HttpGet]
         public IActionResult LogIn()
         {
@@ -87,5 +94,36 @@ namespace YouTube.Plumbing.Controllers
             ModelState.AddModelErrorList(new List<string> { $"Email or Password is wrong! Fail attempt{await _userManager.GetAccessFailedCountAsync(hasUser)}" });
             return View();
         }
+
+
+        [HttpGet]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordVM request)
+        {
+            var validation = await _forgotPasswordValidator.ValidateAsync(request);
+            if (!validation.IsValid)
+            {
+                validation.AddToModelState(this.ModelState);
+                return View();
+
+            }
+            var hasUser = await _userManager.FindByEmailAsync(request.Email);
+            if (hasUser == null)
+            {
+                ViewBag.Result = "UserDoesNotExit";
+                ModelState.AddModelErrorList(new List<string> { "User does not exit!" });
+                return View();
+            }
+            string resetToken = await _userManager.GeneratePasswordResetTokenAsync(hasUser);
+            var passwordResetLink = Url.Action("ResetPassword", "Authentication", new { UserId = hasUser.Id, Token = resetToken, HttpContext.Request.Scheme });
+
+            await _emailSendMethod.SendPasswordResetLinkWithToken(passwordResetLink!, request.Email);
+            return RedirectToAction("LogIn", "Authentication");
+        }
+
     }
 }

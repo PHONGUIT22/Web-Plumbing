@@ -1,8 +1,11 @@
 ﻿using EntityLayer.Identity.Entities;
+using EntityLayer.Identity.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RepositoryLayer.Context;
+using ServiceLayer.Helpers.Identity.EmailHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +16,7 @@ namespace ServiceLayer.Extensions.Identity
 {
     public static  class IdentityExtensions
     {
-        public static IServiceCollection LoadIdentityExtensions(this IServiceCollection services)
+        public static IServiceCollection LoadIdentityExtensions(this IServiceCollection services, IConfiguration config)
         {
             services.AddIdentity<AppUser, AppRole>(opt =>
             {
@@ -36,6 +39,12 @@ namespace ServiceLayer.Extensions.Identity
                 opt.Cookie = newCookie;
                 opt.ExpireTimeSpan = TimeSpan.FromMinutes(60);
             });
+            services.Configure<DataProtectionTokenProviderOptions>(opt => 
+            {
+                opt.TokenLifespan = TimeSpan.FromMinutes(60);
+            });
+            services.AddScoped<IEmailSendMethod, EmailSendMethod>();
+            services.Configure<GmailInformationsVM>(config.GetSection("EmailSettings"));
             return services;
         }
     }
