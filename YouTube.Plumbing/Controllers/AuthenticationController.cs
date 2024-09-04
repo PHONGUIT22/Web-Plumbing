@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
 using ServiceLayer.Helpers.Identity.EmailHelper;
 using ServiceLayer.Helpers.Identity.ModelStateHelper;
+using ServiceLayer.Services.Identity.Abstract;
 namespace YouTube.Plumbing.Controllers
 {
     public class AuthenticationController : Controller
@@ -18,10 +19,12 @@ namespace YouTube.Plumbing.Controllers
         private readonly IValidator<LogInVM> _logInValidator;
         private readonly IValidator<ForgotPasswordVM> _forgotPasswordValidator;
         private readonly IValidator<ResetPasswordVM> _resetPasswordValidator;
+        private readonly IAuthenticationCustomService _authenticationCustomService;
         private readonly IMapper _iMapper;
-        private readonly IEmailSendMethod _emailSendMethod;
+        /*private readonly IEmailSendMethod _emailSendMethod;*/
 
-        public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator, IMapper iMapper, IEmailSendMethod emailSendMethod, IValidator<ResetPasswordVM> resetPasswordValidator)
+        public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator,
+            IMapper iMapper, /*IEmailSendMethod emailSendMethod,*/ IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationCustomService authenticationCustomService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -29,8 +32,9 @@ namespace YouTube.Plumbing.Controllers
             _logInValidator = logInValidator;
             _forgotPasswordValidator = forgotPasswordValidator;
             _iMapper = iMapper;
-            _emailSendMethod = emailSendMethod;
+            /*_emailSendMethod = emailSendMethod;*/
             _resetPasswordValidator = resetPasswordValidator;
+            _authenticationCustomService = authenticationCustomService;
         }
 
         [HttpGet]
@@ -121,10 +125,11 @@ namespace YouTube.Plumbing.Controllers
                 ModelState.AddModelErrorList(new List<string> { "User does not exit!" });
                 return View();
             }
-            string resetToken = await _userManager.GeneratePasswordResetTokenAsync(hasUser);
+            await _authenticationCustomService.CreateResetCredentialsAndSend(hasUser, HttpContext, Url, request);
+            /*string resetToken = await _userManager.GeneratePasswordResetTokenAsync(hasUser);
             var passwordResetLink = Url.Action("ResetPassword", "Authentication", new { userId = hasUser.Id, token = resetToken},HttpContext.Request.Scheme);
 
-            await _emailSendMethod.SendPasswordResetLinkWithToken(passwordResetLink!, request.Email);
+            await _emailSendMethod.SendPasswordResetLinkWithToken(passwordResetLink!, request.Email);*/
             return RedirectToAction("LogIn", "Authentication");
         }
         [HttpGet]
@@ -157,7 +162,7 @@ namespace YouTube.Plumbing.Controllers
             }
 
             var hasUser = await _userManager.FindByIdAsync(userId.ToString()!);
-            if(hasUser != null)
+            if(hasUser == null)
             {
                 return RedirectToAction("Login", "Authentication");
             }

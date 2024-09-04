@@ -22,8 +22,6 @@
 		<Folder Include="Middlewares\Identity\" />
 		<Folder Include="Middlewares\WebApplication\" />
 		<Folder Include="test\" />
-		<Folder Include="Services\Identity\Abstract\" />
-		<Folder Include="Services\Identity\Concrete\" />
 	</ItemGroup>
 
 	<ItemGroup>
