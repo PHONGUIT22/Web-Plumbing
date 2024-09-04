@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YouTube.Plumbing", "YouTube.Plumbing\YouTube.Plumbing.csproj", "{1607C3BE-46B1-4698-9473-D3F06F51258A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web.Plumbing", "YouTube.Plumbing\Web.Plumbing.csproj", "{1607C3BE-46B1-4698-9473-D3F06F51258A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{CD46AC0C-4594-4892-95CC-F1BEEDA3A07D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreLayer", "CoreLayer\CoreLayer.csproj", "{CD46AC0C-4594-4892-95CC-F1BEEDA3A07D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{F414AD4D-90A9-4CA4-BF19-884CC9F51710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EntityLayer", "EntityLayer\EntityLayer.csproj", "{F414AD4D-90A9-4CA4-BF19-884CC9F51710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryLayer", "RepositoryLayer\RepositoryLayer.csproj", "{AB4F830B-E9D8-4CD9-8E9D-1729CC50C1B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryLayer", "RepositoryLayer\RepositoryLayer.csproj", "{AB4F830B-E9D8-4CD9-8E9D-1729CC50C1B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{40F11084-3B30-4D40-9DCC-01597118A9BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceLayer", "ServiceLayer\ServiceLayer.csproj", "{40F11084-3B30-4D40-9DCC-01597118A9BB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
