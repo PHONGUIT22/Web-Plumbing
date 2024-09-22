@@ -1,0 +1,71 @@
+﻿@model UserEditVM
+@{
+    ViewData["Title"] = "UserEdit";
+    Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+}
+<div class="mb-2">
+    <h5 class="card-title">User edit</h5>
+
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="User" asp-controller="Dashboard" asp-action="Index">Dashboard</a></li>
+            <li class="breadcrumb-item"><a asp-area="Admin" asp-controller="About" asp-action="GetAboutList">About Us </a></li>
+
+            <li class="breadcrumb-item"><a href="#">Update</a></li>
+        </ol>
+    </nav>
+</div>
+@if (!string.IsNullOrEmpty(ViewBag.Result))
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+
+<form class="row g-3" asp-controller="AuthenticationUser" asp-action="UserEdit" method="post" enctype="multipart/form-data">
+    <div class="col-12">
+        <label asp-for="Username" class="form-label">Username</label>
+        <input asp-for="Username" type="text" class="form-control" id="yourName">
+        <span asp-validation-for="Username" class="text-danger"></span>
+    </div>
+
+    <div class="col-12">
+        <label asp-for="Email" class="form-label">Email</label>
+        <input asp-for="Email" type="text" class="form-control" id="yourName">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <label asp-for="PhoneNumber" class="form-label">Phone number</label>
+        <input asp-for="PhoneNumber" type="text" class="form-control" id="yourName">
+        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <label asp-for="Password" class="form-label">Password</label>
+        <input asp-for="Password" type="password" class="form-control">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <label asp-for="NewPassword" class="form-label">New Password</label>
+        <input asp-for="NewPassword" type="password" class="form-control">
+        <span asp-validation-for="NewPassword" class="text-danger"></span>
+    </div>
+    <div class="col-12">
+        <label asp-for="ConfirmNewPassword" class="form-label">Confirm New Password</label>
+        <input asp-for="ConfirmNewPassword" type="text" class="form-control" id="yourName">
+        <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+    </div>
+    <div class="row-mb-12">
+        <label asp-for="Photo" class="col-md-4 col-lg-3 col-form-label"></label>
+        <div class="col-md-8 col-lg-9">
+            <input asp-for="Photo" accept="image/*" type="file" class="form-control">
+            <span asp-validation-for="Photo" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary w-100" type="submit">Edit Account</button>
+    </div>
+    
+</form>
+

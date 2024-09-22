@@ -11,6 +11,7 @@ using FluentValidation;
 using ServiceLayer.FluentValidation.WebApplication.HomePageValidation;
 using ServiceLayer.Extensions.Identity;
 using Microsoft.Extensions.Configuration;
+using ServiceLayer.Helpers.Generic.Image;
 
 namespace ServiceLayer.Extensions
 {
@@ -34,6 +35,7 @@ namespace ServiceLayer.Extensions
                 opt.DisableDataAnnotationsValidation=true;
             });
             services.AddValidatorsFromAssemblyContaining<HomePageAddValidation>();
+            services.AddScoped<IImageHelper, ImageHelper>();
             return services;
         }
     }

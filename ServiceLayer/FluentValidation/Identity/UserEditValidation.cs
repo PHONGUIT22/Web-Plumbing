@@ -22,10 +22,10 @@ namespace ServiceLayer.FluentValidation.Identity
                 .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Email"))
                 .EmailAddress().WithMessage(IdentityMessages.CheckEmailAddress());
             RuleFor(x => x.NewPassword)
-                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("Password"))
-                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("Password"));
+                .NotEmpty().WithMessage(ValidationMessages.NullEmptyMessage("NewPassword"))
+                .NotNull().WithMessage(ValidationMessages.NullEmptyMessage("NewPassword"));
             RuleFor(x => x.ConfirmNewPassword)
-                .Equal(x => x.Password).WithMessage(IdentityMessages.ComparePassword());
+                .Equal(x => x.NewPassword).WithMessage(IdentityMessages.ComparePassword());
         }
     }
 }

@@ -5,6 +5,7 @@ using EntityLayer.WebApplication.ViewModels.AboutVM;
 using Microsoft.EntityFrameworkCore;
 using RepositoryLayer.Repositories.Abstract;
 using RepositoryLayer.UnitOfWork.Abstract;
+using ServiceLayer.Helpers.Generic.Image;
 using ServiceLayer.Services.WebApplication.Abstract;
 using System;
 using System.Collections.Generic;
@@ -20,12 +21,14 @@ namespace ServiceLayer.Services.WebApplication.Concrete
         private readonly IUnitOfWorks _unitOfWorks;
         private readonly IMapper _mapper;
         private readonly IGenericRepositories<About> _repository;
+        private readonly IImageHelper _imageHelper;
 
-        public AboutService(IUnitOfWorks unitOfWorks, IMapper mapper)
+        public AboutService(IUnitOfWorks unitOfWorks, IMapper mapper, IImageHelper imageHelper)
         {
             _unitOfWorks = unitOfWorks;
             _mapper = mapper;
             _repository = _unitOfWorks.GetGenericRepository<About>();
+            _imageHelper = imageHelper;
         }
         public async Task<List<AboutListVM>> GetAllListAsync()
         {
@@ -39,6 +42,10 @@ namespace ServiceLayer.Services.WebApplication.Concrete
 
         public async Task AddAboutAsync(AboutAddVM request)
         {
+            var test = await _imageHelper.ImageUpload
+                (request.Photo.FileName, request.Photo, CoreLayer.Enumerators.ImageType.about, null);
+            request.FileName = test.Filename!+".jpg";
+            request.FileType = test.FileType!;
             var about = _mapper.Map<About>(request);
             await _repository.AddEntityAsync(about);
             await _unitOfWorks.CommitAsync();
