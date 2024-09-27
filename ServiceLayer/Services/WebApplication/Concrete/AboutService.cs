@@ -42,10 +42,8 @@ namespace ServiceLayer.Services.WebApplication.Concrete
 
         public async Task AddAboutAsync(AboutAddVM request)
         {
-            var test = await _imageHelper.ImageUpload
-                (request.Photo.FileName, request.Photo, CoreLayer.Enumerators.ImageType.about, null);
-            request.FileName = test.Filename!+".jpg";
-            request.FileType = test.FileType!;
+            
+           
             var about = _mapper.Map<About>(request);
             await _repository.AddEntityAsync(about);
             await _unitOfWorks.CommitAsync();

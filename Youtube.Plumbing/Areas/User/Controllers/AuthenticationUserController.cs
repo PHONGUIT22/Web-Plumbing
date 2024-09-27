@@ -100,6 +100,8 @@ namespace Web.Plumbing.Areas.User.Controllers
                 await _signInManager.SignOutAsync();
                 await _signInManager.SignInAsync(user, false);
             }
+            ViewBag.Username = user.UserName;
+
             return View();
         }
     }

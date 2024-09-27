@@ -27,7 +27,7 @@ namespace ServiceLayer.Helpers.Generic.Image
             wwwRoot = _hostEnvironment.ContentRootPath + "/wwwroot/";
         }
 
-        public async Task<ImageUploadModel> ImageUpload(string name, IFormFile imageFile, ImageType imageType, string? folderName)
+        public async Task<ImageUploadModel> ImageUpload( IFormFile imageFile, ImageType imageType, string? folderName)
         {
             if(folderName == null)
             {
