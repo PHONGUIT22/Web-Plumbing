@@ -28,47 +28,48 @@ namespace ServiceLayer.Helpers.Generic.Image
         }
 
         public async Task<ImageUploadModel> ImageUpload( IFormFile imageFile, ImageType imageType, string? folderName)
-        {
-            if(folderName == null)
-            {
-                switch (imageType)
-                {
-                    case ImageType.about:
-                        folderName = aboutFolder; 
-                        break;
-                    case ImageType.identity:
-                        folderName = identityFolder;
-                        break;
-                    case ImageType.team:
-                        folderName = teamFolder;
-                        break;
-                    case ImageType.testimonal:
-                        folderName = testimonalFolder;
-                        break;
-                    case ImageType.portfolio:
-                        folderName = portfolioFolder;
-                        break;
+         {
+             if(folderName == null)
+             {
+                 switch (imageType)
+                 {
+                     case ImageType.about:
+                         folderName = aboutFolder; 
+                         break;
+                     case ImageType.identity:
+                         folderName = identityFolder;
+                         break;
+                     case ImageType.team:
+                         folderName = teamFolder;
+                         break;
+                     case ImageType.testimonal:
+                         folderName = testimonalFolder;
+                         break;
+                     case ImageType.portfolio:
+                         folderName = portfolioFolder;
+                         break;
 
-                }
-            }
-            if (!Directory.Exists($"{wwwRoot}/{imageFolder}/{folderName}"))
-            {
-                Directory.CreateDirectory($"{wwwRoot}/{imageFolder}/{folderName}");
-            }
-            string fileExtension = Path.GetExtension( imageFile.FileName ).ToLower();
-            if (fileExtension != ".jpg" && fileExtension != ".jpeg" && fileExtension != ".png" && fileExtension != ".gif")
-            {
-                return new ImageUploadModel { Error = "Please upload an image file with one of the following extensions: .jpg, .jpeg, .png, .gif" };
-            }
+                 }
+             }
+             if (!Directory.Exists($"{wwwRoot}/{imageFolder}/{folderName}"))
+             {
+                 Directory.CreateDirectory($"{wwwRoot}/{imageFolder}/{folderName}");
+             }
+             string fileExtension = Path.GetExtension( imageFile.FileName ).ToLower();
+             if (fileExtension != ".jpg" && fileExtension != ".jpeg" && fileExtension != ".png" && fileExtension != ".gif")
+             {
+                 return new ImageUploadModel { Error = "Please upload an image file with one of the following extensions: .jpg, .jpeg, .png, .gif" };
+             }
 
-            DateTime dateTime = DateTime.Now;
-            var newFileName = folderName + "_" + dateTime.Microsecond.ToString();
-            string path = Path.Combine($"{wwwRoot}/{imageFolder}/{folderName}", newFileName);
-            await using var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 1024 * 1024, useAsync: false);
-            await imageFile.CopyToAsync(stream);
-            await stream.FlushAsync();
-            return new ImageUploadModel {Filename =$"{folderName}/{newFileName}", FileType = imageFile.ContentType};
-        }
+             DateTime dateTime = DateTime.Now;
+             var newFileName = folderName + "_" + dateTime.Microsecond.ToString()+ fileExtension;
+             string path = Path.Combine($"{wwwRoot}/{imageFolder}/{folderName}", newFileName);
+             await using var stream = new FileStream(path, FileMode.Create, FileAccess.Write, FileShare.None, 1024 * 1024, useAsync: false);
+             await imageFile.CopyToAsync(stream);
+             await stream.FlushAsync();
+             return new ImageUploadModel {Filename =$"{folderName}/{newFileName}", FileType = imageFile.ContentType};
+         }
+
 
         public string DeleteImage(string imageName)
         {

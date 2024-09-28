@@ -1,6 +1,7 @@
 ﻿using EntityLayer.Identity.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Razor.TagHelpers;
+using System.Diagnostics;
 using System.Security.Claims;
 
 namespace Web.Plumbing.Areas.User.TagHelpers
@@ -31,8 +32,12 @@ namespace Web.Plumbing.Areas.User.TagHelpers
                 if (claim != null)
                 {
                     var signedInUsername = claim.Value;
-                    var user = await _userManager.FindByNameAsync(signedInUsername);
-
+                   
+                    var user = await _userManager.FindByIdAsync(signedInUsername);
+                    if (user == null)
+                    {
+                        Debug.WriteLine($"User not found for username: {signedInUsername}");
+                    }
                     if (user != null && !string.IsNullOrEmpty(user.FileName))
                     {
                         // Set the user-specific image
@@ -41,20 +46,22 @@ namespace Web.Plumbing.Areas.User.TagHelpers
                     else
                     {
                         // Fallback to default image if user or FileName is missing
-                        output.Attributes.SetAttribute("src", "/images/default.png");
+                        Console.WriteLine("FileName is empty or null, using default image.");
+                        output.Attributes.SetAttribute("src", "/images/user/default.png");
                     }
                 }
                 else
                 {
                     // If no identifier claim exists, fallback to default image
-                    output.Attributes.SetAttribute("src", "/images/default.png");
+                    output.Attributes.SetAttribute("src", "/images/user/default.png");
                 }
             }
             else
             {
                 // If user is not authenticated, fallback to default image
-                output.Attributes.SetAttribute("src", "/images/default.png");
+                output.Attributes.SetAttribute("src", "/images/user/default.png");
             }
         }
     }
 }
+
