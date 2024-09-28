@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using RepositoryLayer.Context;
+using ServiceLayer.Customization.Indentity.ErrorDescriber;
 using ServiceLayer.Helpers.Identity.EmailHelper;
 using System;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ namespace ServiceLayer.Extensions.Identity
             })
                 .AddRoleManager<RoleManager<AppRole>>()
                 .AddEntityFrameworkStores<AppDbContext>()
-                .AddDefaultTokenProviders();
+                .AddDefaultTokenProviders().AddErrorDescriber<LocalizationErrorDescriber>();
             services.ConfigureApplicationCookie(opt =>
             {
                 var newCookie = new CookieBuilder();
