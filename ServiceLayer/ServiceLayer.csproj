@@ -11,7 +11,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<Folder Include="Customization\Indentity\Validators\" />
 		<Folder Include="Customization\WebApplication\" />
 		<Folder Include="Exception\Identity\" />
 		<Folder Include="Exception\WebApplication\" />
