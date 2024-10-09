@@ -19,12 +19,12 @@ namespace YouTube.Plumbing.Controllers
         private readonly IValidator<LogInVM> _logInValidator;
         private readonly IValidator<ForgotPasswordVM> _forgotPasswordValidator;
         private readonly IValidator<ResetPasswordVM> _resetPasswordValidator;
-        private readonly IAuthenticationCustomService _authenticationCustomService;
+        private readonly IAuthenticationMainService _authenticationCustomService;
         private readonly IMapper _iMapper;
         /*private readonly IEmailSendMethod _emailSendMethod;*/
 
         public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator,
-            IMapper iMapper, /*IEmailSendMethod emailSendMethod,*/ IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationCustomService authenticationCustomService)
+            IMapper iMapper, /*IEmailSendMethod emailSendMethod,*/ IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationMainService authenticationCustomService)
         {
             _userManager = userManager;
             _signInManager = signInManager;

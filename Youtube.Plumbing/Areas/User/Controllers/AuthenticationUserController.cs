@@ -57,7 +57,7 @@ namespace Web.Plumbing.Areas.User.Controllers
                 ModelState.AddModelErrorList(new List<string> { "Wrong Password!" });
                 return View();
             }
-
+            
             // Handle password change if a new password is provided
             if (request.NewPassword != null)
             {
