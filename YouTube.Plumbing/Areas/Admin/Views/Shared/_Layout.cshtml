@@ -11,7 +11,7 @@
 
   <!-- Favicons -->
   <link href="~/Admin/assets/img/favicon.png" rel="icon">
-  <link href="~/Admin/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="~/Admin/assets/img/favicon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -39,12 +39,18 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-          <img src="~/Admin/assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
+          <img src="~/Admin/assets/img/favicon.png" >
+        <span class="d-none d-lg-block">@User.Identity!.Name</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->
+    <div class="header-nav ms-auto">
+        <ul class="d-flex alignalign-items-center">
+            <li> <a class="btn btn-outline-info me-2" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door"></i></a></li>
+            <li><a class="btn btn-outline-warning me-2" asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="bi bi-person-bounding-box"></i></a></li>
 
+        </ul>
+    </div>
     </header> <!-- ======= EndHeader ======= -->
 
   <!-- ======= Sidebar ======= -->
@@ -110,16 +116,7 @@
               <span>Contact</span>
           </a>
       </li> <!--end Contact section-->
-      <li class="nav-heading">Settings</li>
-
-      <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
-              <i class="bi bi-gear"></i>
-              <span>User Settings</span>
-          </a>
-      </li> <!--end Contact section-->
-
-    </ul>
+   </ul>   
 
   </aside><!-- End Sidebar-->
 
