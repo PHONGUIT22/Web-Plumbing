@@ -19,20 +19,22 @@
 </div>
 <!-- Card with an image on top -->
 <div class="card">
-    <img src="~/Admin/assets/img/card.jpg" class="card-img-top" alt="...">
-    <div class="card-body">
-        <h5 class="card-title">@Model.Title</h5>
-    </div>
+    <img src="~/images/@Model.FileName" class="card-img-top" alt="Plumbing Portfolio">
+    
 </div><!-- End Card with an image on top -->
 
 <div class="card">
     <div class="card-body">
         <!-- Floating Labels Form -->
         <form asp-area="Admin" asp-controller="Portfolio" asp-action="UpdatePortfolio" method="post" class="row g-3" enctype="multipart/form-data">
-            <input type="hidden" asp-for="FileName" value="test" />
-            <input type="hidden" asp-for="FileType" value="test" />
+            <!--
+            
+            
+            -->
             <input type="hidden" asp-for="Id" value="test" />
             <input type="hidden" asp-for="RowVersion" value="test" />
+            <input type="hidden" asp-for="FileName" value="test" />
+            <input type="hidden" asp-for="FileType" value="test" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="col-md-12 ">
@@ -45,7 +47,7 @@
             </div>
             <div class="col-md-12">
                 <div class="form-floating">
-                    <textarea asp-for="Category.Name" type="text" class="form-control" placeholder="Category.Name"></textarea>
+                    <textarea asp-for="Category.Name" type="text" class="form-control" placeholder="Category Name"></textarea>
                     <label asp-for="Category.Name">Category</label>
                     <span asp-validation-for="Category.Name" class="text-danger"></span>
 

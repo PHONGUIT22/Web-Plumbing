@@ -23,8 +23,11 @@
     <div class="card-body">
         <!-- Floating Labels Form -->
         <form asp-area="Admin" asp-controller="Portfolio" asp-action="AddPortfolio" method="post" class="row g-3" enctype="multipart/form-data">
-            <input type="hidden" asp-for="FileName" value="test" />
-            <input type="hidden" asp-for="FileType" value="test" />
+            <!--
+                <input type="hidden" asp-for="FileName" value="test" />
+                <input type="hidden" asp-for="FileType" value="test" />
+            -->
+            
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
             <div class="col-md-12 ">
