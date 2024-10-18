@@ -85,6 +85,8 @@
                     </div>
                     <div class="col-12">
                     <p class="small mb-0">Don't have account? <a asp-controller="Authentication" asp-action="SignUp">Create an account</a></p>
+                    <p class="small mb-0">Forgot Password <a asp-controller="Authentication" asp-action="ForgotPassword">renew to password</a></p>
+
                     </div>
                   </form>
 
@@ -114,7 +116,10 @@
 
     <!-- Template Main JS File -->
     <script src="~/Admin/assets/js/main.js"></script>
-
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 
 </html>

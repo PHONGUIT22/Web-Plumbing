@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages;
+using NToastNotify;
 using ServiceLayer.Helpers.Identity.EmailHelper;
 using ServiceLayer.Helpers.Identity.ModelStateHelper;
 using ServiceLayer.Services.Identity.Abstract;
@@ -21,10 +22,11 @@ namespace YouTube.Plumbing.Controllers
         private readonly IValidator<ResetPasswordVM> _resetPasswordValidator;
         private readonly IAuthenticationMainService _authenticationCustomService;
         private readonly IMapper _iMapper;
+        private readonly IToastNotification _toasty;
         /*private readonly IEmailSendMethod _emailSendMethod;*/
 
         public AuthenticationController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, IValidator<SignUpVM> signUpValidator, IValidator<LogInVM> logInValidator, IValidator<ForgotPasswordVM> forgotPasswordValidator,
-            IMapper iMapper, /*IEmailSendMethod emailSendMethod,*/ IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationMainService authenticationCustomService)
+            IMapper iMapper, /*IEmailSendMethod emailSendMethod,*/ IValidator<ResetPasswordVM> resetPasswordValidator, IAuthenticationMainService authenticationCustomService, IToastNotification toasty)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -35,6 +37,7 @@ namespace YouTube.Plumbing.Controllers
             /*_emailSendMethod = emailSendMethod;*/
             _resetPasswordValidator = resetPasswordValidator;
             _authenticationCustomService = authenticationCustomService;
+            _toasty = toasty;
         }
 
         [HttpGet]
@@ -59,6 +62,8 @@ namespace YouTube.Plumbing.Controllers
                 ModelState.AddModelErrorList(userCreateResult.Errors);
                 return View();
             }
+            _toasty.AddSuccessToastMessage($"{user.UserName} successfully created.",new ToastrOptions { Title=
+                "Congratulation"});
             return RedirectToAction("LogIn", "Authentication");
         }
 
@@ -71,7 +76,7 @@ namespace YouTube.Plumbing.Controllers
         [HttpPost]
         public async Task<IActionResult> LogIn(LogInVM request, string? returnUrl=null)
         {
-            returnUrl = returnUrl ?? Url.Action("Index", "Dashboard", new { Area = "Admin" });
+            returnUrl = returnUrl ?? Url.Action("Index", "Dashboard", new { Area = "User" });
             var validation = await _logInValidator.ValidateAsync(request);
             if (!validation.IsValid) 
             {
@@ -89,6 +94,11 @@ namespace YouTube.Plumbing.Controllers
             var logInResult = await _signInManager.PasswordSignInAsync(hasUser, request.Password, request.RememberMe, true);
             if(logInResult.Succeeded)
             {
+                _toasty.AddSuccessToastMessage("You have logged In.", new ToastrOptions
+                {
+                    Title
+                = "Congratulation"
+                });
                 return Redirect(returnUrl!);
             }
             if(logInResult.IsLockedOut)

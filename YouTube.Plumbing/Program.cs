@@ -1,10 +1,14 @@
 using RepositoryLayer.Extensions;
 using ServiceLayer.Extensions;
-
+using NToastNotify;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddNToastNotifyToastr(new NToastNotify.ToastrOptions
+{
+    ProgressBar = false,
+    PositionClass = ToastPositions.BottomCenter
+});
 builder.Services.LoadRepositoryLayerExtensions(builder.Configuration);
 builder.Services.LoadServiceLayerExtensions(builder.Configuration);
 var app = builder.Build();
