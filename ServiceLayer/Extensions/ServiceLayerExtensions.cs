@@ -12,6 +12,7 @@ using ServiceLayer.FluentValidation.WebApplication.HomePageValidation;
 using ServiceLayer.Extensions.Identity;
 using Microsoft.Extensions.Configuration;
 using ServiceLayer.Helpers.Generic.Image;
+using ServiceLayer.Extensions.WebApplication;
 
 namespace ServiceLayer.Extensions
 {
@@ -20,6 +21,7 @@ namespace ServiceLayer.Extensions
         public static IServiceCollection LoadServiceLayerExtensions(this IServiceCollection services, IConfiguration config)
         {
             services.LoadIdentityExtensions(config);
+            services.LoadWebApplicationExtensions();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             var types = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.IsClass && !x.IsAbstract && x.Name.EndsWith("Service"));
             foreach (var serviceType in types)

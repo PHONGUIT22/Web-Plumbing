@@ -15,9 +15,7 @@
 		<Folder Include="Exception\Identity\" />
 		<Folder Include="Exception\WebApplication\" />
 		<Folder Include="Extensions\Identity\" />
-		<Folder Include="Extensions\WebApplication\" />
 		<Folder Include="Filters\Identity\" />
-		<Folder Include="Filters\WebApplication\" />
 		<Folder Include="Helpers\WebApplication\" />
 		<Folder Include="Messages\Identity\" />
 		<Folder Include="Middlewares\Identity\" />
