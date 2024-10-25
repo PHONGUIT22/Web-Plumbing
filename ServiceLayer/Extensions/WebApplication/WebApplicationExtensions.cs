@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using EntityLayer.WebApplication.Entities;
+using Microsoft.Extensions.DependencyInjection;
 using ServiceLayer.Filters.WebApplication;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,10 @@ namespace ServiceLayer.Extensions.WebApplication
     {
         public static IServiceCollection LoadWebApplicationExtensions(this IServiceCollection services)
         {
-            services.AddScoped(typeof(AddAboutPreventationFilter));
+            services.AddScoped(typeof(GenericAddAboutPreventationFilter<About>));
+            services.AddScoped(typeof(GenericAddAboutPreventationFilter<Contact>));
+           
+
             return services;
         }
     }

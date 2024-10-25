@@ -1,8 +1,10 @@
-﻿using EntityLayer.WebApplication.ViewModels.Category;
+﻿using EntityLayer.WebApplication.Entities;
+using EntityLayer.WebApplication.ViewModels.Category;
 using EntityLayer.WebApplication.ViewModels.Contact;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
+using ServiceLayer.Filters.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
@@ -26,7 +28,10 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             var contactList = await _contactService.GetAllListAsync();
             return View(contactList);
         }
+        [ServiceFilter(typeof(GenericAddAboutPreventationFilter<Contact>))]
+
         [HttpGet]
+
         public IActionResult AddContact()
         {
             return View();
@@ -69,4 +74,5 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             return RedirectToAction("GetContactList", "Contact", new { Area = ("Admin") });
         }
     }
+}
 }

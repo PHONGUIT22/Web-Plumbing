@@ -1,4 +1,5 @@
-﻿using EntityLayer.WebApplication.ViewModels.AboutVM;
+﻿using EntityLayer.WebApplication.Entities;
+using EntityLayer.WebApplication.ViewModels.AboutVM;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             var aboutList = await _aboutService.GetAllListAsync();
             return View(aboutList);
         }
-        [ServiceFilter(typeof(AddAboutPreventationFilter))]
+        [ServiceFilter(typeof(GenericAddAboutPreventationFilter<About>))]
         [HttpGet]
         public IActionResult AddAbout() 
         { 
