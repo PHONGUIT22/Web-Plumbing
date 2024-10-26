@@ -45,7 +45,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             validation.AddToModelState(this.ModelState);
             return View();
         }
-
+        [ServiceFilter(typeof(GenericNotFoundFilter<About>))]
         [HttpGet]
         public async Task<IActionResult> UpdateAbout(int id)
         {

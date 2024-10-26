@@ -48,7 +48,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             validation.AddToModelState(this.ModelState);
             return View();
         }
-
+        [ServiceFilter(typeof(GenericNotFoundFilter<Contact>))]
         [HttpGet]
         public async Task<IActionResult> UpdateContact(int id)
         {

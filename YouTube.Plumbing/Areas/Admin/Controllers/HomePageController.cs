@@ -1,8 +1,10 @@
-﻿using EntityLayer.WebApplication.ViewModels.Category;
+﻿using EntityLayer.WebApplication.Entities;
+using EntityLayer.WebApplication.ViewModels.Category;
 using EntityLayer.WebApplication.ViewModels.HomePage;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
+using ServiceLayer.Filters.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
@@ -43,7 +45,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             validation.AddToModelState(this.ModelState);
             return View();
         }
-
+        [ServiceFilter(typeof(GenericNotFoundFilter<HomePage>))]
         [HttpGet]
         public async Task<IActionResult> UpdateHomePage(int id)
         {
