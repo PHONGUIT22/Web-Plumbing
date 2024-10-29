@@ -9,7 +9,7 @@ namespace CoreLayer.BaseEntities
     public abstract class BaseEntity : IBaseEntity
     {
         public virtual int Id { get; set; }
-        public virtual string CreateDate { get; set; } = DateTime.Now.ToString("d");
+        public virtual string CreateDate { get; set; } = null!;
 
         public virtual string? UpdateDate { get; set; }
 

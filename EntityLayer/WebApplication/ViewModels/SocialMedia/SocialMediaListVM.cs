@@ -11,7 +11,7 @@ namespace EntityLayer.WebApplication.ViewModels.SocialMedia
     public class SocialMediaListVM
     {
         public int Id { get; set; }
-        public string CreateDate { get; set; } = DateTime.Now.ToString("d");
+        public string CreateDate { get; set; } = null!;
 
         public string? UpdateDate { get; set; }
         public string? Twitter { get; set; }

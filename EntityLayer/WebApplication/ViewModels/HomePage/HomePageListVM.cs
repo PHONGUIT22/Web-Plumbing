@@ -9,7 +9,7 @@ namespace EntityLayer.WebApplication.ViewModels.HomePage
     public class HomePageListVM
     {
         public int Id { get; set; }
-        public string CreateDate { get; set; } = DateTime.Now.ToString("d");
+        public string CreateDate { get; set; } = null!;
 
         public string? UpdateDate { get; set; }
         public string Header { get; set; } = null!;

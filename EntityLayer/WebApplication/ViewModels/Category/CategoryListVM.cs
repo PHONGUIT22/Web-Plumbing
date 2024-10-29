@@ -10,7 +10,7 @@ namespace EntityLayer.WebApplication.ViewModels.Category
     public class CategoryListVM
     {
         public int Id { get; set; }
-        public string CreateDate { get; set; } = DateTime.Now.ToString("d");
+        public string CreateDate { get; set; } = null!;
 
         public string? UpdateDate { get; set; }
 

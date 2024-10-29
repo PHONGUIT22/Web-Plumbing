@@ -86,6 +86,7 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             var about = _mapper.Map<About>(request);
             _repository.UpdateEntity(about);
             await _unitOfWorks.CommitAsync();
+            
             if(request.Photo != null)
             {
                 _imageHelper.DeleteImage(oldAbout.FileName);

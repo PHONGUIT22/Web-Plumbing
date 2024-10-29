@@ -21,11 +21,15 @@ namespace RepositoryLayer.Configugration.WebApplication
             builder.HasData(new Category
             {
                 Id = 1,
+                CreateDate = "30/10/2024",
+
                 Name = "Project",
             },
             new Category
             {
                 Id = 2,
+                CreateDate = "30/10/2024",
+
                 Name = "SiteWorks",
             });
         }

@@ -1,4 +1,5 @@
-﻿using RepositoryLayer.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using RepositoryLayer.Context;
 using RepositoryLayer.Repositories.Abstract;
 using RepositoryLayer.Repositories.Concrete;
 using RepositoryLayer.UnitOfWork.Abstract;
@@ -26,7 +27,9 @@ namespace RepositoryLayer.UnitOfWork.Concrete
 
         public async Task CommitAsync()
         {
-            await _context.SaveChangesAsync();
+           
+                await _context.SaveChangesAsync();
+                
         }
 
         public ValueTask DisposeAsync()

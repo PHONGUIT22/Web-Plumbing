@@ -24,6 +24,8 @@ namespace RepositoryLayer.Configugration.WebApplication
             builder.HasData(new Contact
             {
                 Id = 1,
+                CreateDate = "30/10/2024",
+
                 Call = "123456666",
                 Email = "t@try.com",
                 Location = "Iron street, Brave .., Kd 2cf",

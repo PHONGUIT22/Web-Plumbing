@@ -9,7 +9,7 @@ namespace EntityLayer.WebApplication.ViewModels.Contact
     public class ContactListVM
     {
         public int Id { get; set; }
-        public string CreateDate { get; set; } = DateTime.Now.ToString("d");
+        public string CreateDate { get; set; } = null!;
 
         public string? UpdateDate { get; set; }
         public string Location { get; set; } = null!;

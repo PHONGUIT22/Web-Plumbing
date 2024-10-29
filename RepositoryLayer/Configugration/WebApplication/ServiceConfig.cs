@@ -22,6 +22,8 @@ namespace RepositoryLayer.Configugration.WebApplication
             builder.HasData(new Service
             {
                 Id = 1,
+                CreateDate = "30/10/2024",
+
                 Icon = "bi-bi-facebook1",
                 Name = "Plumbing service 1",
                 Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" +
@@ -30,6 +32,8 @@ namespace RepositoryLayer.Configugration.WebApplication
             }, new Service
             {
                 Id = 2,
+                CreateDate = "30/10/2024",
+
                 Icon = "bi-bi-facebook2",
                 Name = "Plumbing service 1",
                 Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" +
@@ -38,6 +42,8 @@ namespace RepositoryLayer.Configugration.WebApplication
             }, new Service
             {
                 Id = 3,
+                CreateDate = "30/10/2024",
+
                 Icon = "bi-bi-facebook3",
                 Name = "Plumbing service 1",
                 Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s" +

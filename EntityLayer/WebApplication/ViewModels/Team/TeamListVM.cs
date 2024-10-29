@@ -9,7 +9,7 @@ namespace EntityLayer.WebApplication.ViewModels.Team
     public class TeamListVM
     {
         public int Id { get; set; }
-        public string CreateDate { get; set; } = DateTime.Now.ToString("d");
+        public string CreateDate { get; set; } = null!;
 
         public string? UpdateDate { get; set; }
         public string FullName { get; set; } = null!;

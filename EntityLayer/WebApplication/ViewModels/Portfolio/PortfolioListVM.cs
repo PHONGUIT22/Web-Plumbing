@@ -10,7 +10,7 @@ namespace EntityLayer.WebApplication.ViewModels.Portfolio
     public class PortfolioListVM
     {
         public int Id { get; set; }
-        public string CreateDate { get; set; } = DateTime.Now.ToString("d");
+        public string CreateDate { get; set; } = null!;
 
         public string? UpdateDate { get; set; }
         public string Title { get; set; } = null!;

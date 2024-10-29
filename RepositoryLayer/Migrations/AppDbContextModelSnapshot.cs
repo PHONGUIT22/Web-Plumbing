@@ -47,6 +47,22 @@ namespace RepositoryLayer.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "8c90791e-7c0c-4366-a315-6d51287c1c76",
+                            ConcurrencyStamp = "e84654d0-acf5-48d2-91e9-8a80e0d48a88",
+                            Name = "SuperAdmin",
+                            NormalizedName = "SUPERADMIN"
+                        },
+                        new
+                        {
+                            Id = "bad7cc85-8f42-4bf8-a0db-1a078d18ce40",
+                            ConcurrencyStamp = "b6fc9522-dbae-4a50-be25-8e3572563532",
+                            Name = "MemBer",
+                            NormalizedName = "MEMBER"
+                        });
                 });
 
             modelBuilder.Entity("EntityLayer.Identity.Entities.AppUser", b =>
@@ -118,6 +134,40 @@ namespace RepositoryLayer.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "506c3d14-6659-4821-84a1-658b2f27da16",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "06e2a304-6db4-4b12-8ff0-b1915322ea41",
+                            Email = "np79857@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "NP79857@GMAIL.COM",
+                            NormalizedUserName = "PHONG",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ6XGhQr12z6dbBLsU6iTGZVkB9RwKyac59EqK126eix8GQcWzExUNkm2vcABdmKTQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "cdc905b0-43e9-401e-8bc6-a51fffd67fa4",
+                            TwoFactorEnabled = false,
+                            UserName = "phong"
+                        },
+                        new
+                        {
+                            Id = "fb2be674-dbfc-4226-8931-f382cbfe79c3",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "295a1d49-1491-4838-8562-ebb83ad09cbd",
+                            Email = "np79856@gmail.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "NP79856@GMAIL.COM",
+                            NormalizedUserName = "PHONGMEMBER",
+                            PasswordHash = "AQAAAAIAAYagAAAAECVWkvmFi9gqo5VhYFZKXljTsvy1yP/4Rv0U8YAjYMMfUARJGLkZO6ckBqIqqZOITQ==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "e706c044-4f13-408b-a20b-d1f2a72edaae",
+                            TwoFactorEnabled = false,
+                            UserName = "phongmember"
+                        });
                 });
 
             modelBuilder.Entity("EntityLayer.WebApplication.Entities.About", b =>
@@ -192,7 +242,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Clients = 5,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             Description = "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                             FileName = "test",
                             FileType = "test",
@@ -240,13 +290,13 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             Name = "Project"
                         },
                         new
                         {
                             Id = 2,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             Name = "SiteWorks"
                         });
                 });
@@ -302,7 +352,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Call = "123456666",
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             Email = "t@try.com",
                             Location = "Iron street, Brave .., Kd 2cf",
                             Map = "TestLink Here"
@@ -354,7 +404,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             Description = "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
                             Header = "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                             VideoLink = "Test video link"
@@ -411,7 +461,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FileName = "test",
                             FileType = "test",
                             Title = "test Picture"
@@ -420,7 +470,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 2,
                             CategoryId = 1,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FileName = "test2",
                             FileType = "test2",
                             Title = "test Picture2"
@@ -429,7 +479,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             CategoryId = 2,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FileName = "test3",
                             FileType = "test3",
                             Title = "test Picture3"
@@ -438,7 +488,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 4,
                             CategoryId = 2,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FileName = "test4",
                             FileType = "test4",
                             Title = "test Picture4"
@@ -491,7 +541,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived n",
                             Icon = "bi-bi-facebook1",
                             Name = "Plumbing service 1"
@@ -499,7 +549,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 2,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived n",
                             Icon = "bi-bi-facebook2",
                             Name = "Plumbing service 1"
@@ -507,7 +557,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 3,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             Description = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived n",
                             Icon = "bi-bi-facebook3",
                             Name = "Plumbing service 1"
@@ -557,7 +607,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FaceBook = "testFacebook",
                             Instagram = "testInsa"
                         });
@@ -624,7 +674,7 @@ namespace RepositoryLayer.Migrations
                         new
                         {
                             Id = 1,
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FaceBook = "facebook",
                             FileName = "test",
                             FileType = "test",
@@ -689,7 +739,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 1,
                             Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived n",
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FileName = "test",
                             FileType = "test",
                             FullName = "DDD",
@@ -699,7 +749,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 2,
                             Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived n",
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FileName = "test",
                             FileType = "test",
                             FullName = "DDD2",
@@ -709,7 +759,7 @@ namespace RepositoryLayer.Migrations
                         {
                             Id = 3,
                             Comment = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived n",
-                            CreateDate = "10/26/2024",
+                            CreateDate = "30/10/2024",
                             FileName = "test",
                             FileType = "test",
                             FullName = "DDD3",
@@ -797,11 +847,20 @@ namespace RepositoryLayer.Migrations
                     b.Property<string>("RoleId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasMaxLength(34)
+                        .HasColumnType("nvarchar(34)");
+
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasDiscriminator().HasValue("IdentityUserRole<string>");
+
+                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -821,6 +880,25 @@ namespace RepositoryLayer.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("EntityLayer.Identity.Entities.AppUserRole", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUserRole<string>");
+
+                    b.HasDiscriminator().HasValue("AppUserRole");
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "506c3d14-6659-4821-84a1-658b2f27da16",
+                            RoleId = "8c90791e-7c0c-4366-a315-6d51287c1c76"
+                        },
+                        new
+                        {
+                            UserId = "fb2be674-dbfc-4226-8931-f382cbfe79c3",
+                            RoleId = "bad7cc85-8f42-4bf8-a0db-1a078d18ce40"
+                        });
                 });
 
             modelBuilder.Entity("EntityLayer.WebApplication.Entities.About", b =>

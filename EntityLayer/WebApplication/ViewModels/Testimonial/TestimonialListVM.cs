@@ -9,7 +9,7 @@ namespace EntityLayer.WebApplication.ViewModels.Testimonial
     public class TestimonialListVM
     {
         public int Id { get; set; }
-        public string CreateDate { get; set; } = DateTime.Now.ToString("d");
+        public string CreateDate { get; set; } = null!;
 
         public string? UpdateDate { get; set; }
         public string Comment { get; set; } = null!;
