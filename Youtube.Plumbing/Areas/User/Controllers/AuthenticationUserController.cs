@@ -12,7 +12,7 @@ using ServiceLayer.Helpers.Identity.ModelStateHelper;
 
 namespace Web.Plumbing.Areas.User.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="MemBer,SuperAdmin")]
     [Area("User")]
     public class AuthenticationUserController : Controller
     {
@@ -131,6 +131,11 @@ namespace Web.Plumbing.Areas.User.Controllers
 
             ViewBag.Username = user.UserName;
             return View();
+        }
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return Redirect("/Home/Index");
         }
     }
 }

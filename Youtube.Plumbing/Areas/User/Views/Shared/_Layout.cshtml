@@ -40,11 +40,17 @@
         <div class="d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
                 <img src="~/Admin/assets/img/logo.png" alt="">
-                <span class="d-none d-lg-block">NiceAdmin</span>
+                <span class="d-none d-lg-block">@User.Identity!.Name</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
         </div><!-- End Logo -->
-
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li> <a class="btn btn-outline-info me-2" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-house-door"></i></a></li>
+                <li><a class="btn btn-outline-warning me-2" asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="bi bi-person-bounding-box"></i></a></li>
+                <li><a class="btn btn-outline-danger" asp-area="User" asp-controller="AuthenticationUser" asp-action="Logout"><i class="bi bi-box-arrow-right"></i></a></li>
+            </ul>
+        </nav>
     </header> <!-- ======= EndHeader ======= -->
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">

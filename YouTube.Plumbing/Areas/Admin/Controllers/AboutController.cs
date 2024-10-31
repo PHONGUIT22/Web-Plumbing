@@ -2,12 +2,14 @@
 using EntityLayer.WebApplication.ViewModels.AboutVM;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ServiceLayer.Filters.WebApplication;
 using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "SuperAdmin")]
     [Area("Admin")]
     public class AboutController : Controller
     {
