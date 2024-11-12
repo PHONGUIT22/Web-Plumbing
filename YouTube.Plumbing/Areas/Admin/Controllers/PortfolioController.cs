@@ -10,7 +10,7 @@ using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Policy = "AdminObserver")]
     [Area("Admin")]
     public class PortfolioController : Controller
     {
@@ -66,7 +66,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             validation.AddToModelState(this.ModelState);
             return View();
         }
-
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeletePortfolio(int id)
         {   
             await _portfolioService.DeletePortfolioAsync(id);

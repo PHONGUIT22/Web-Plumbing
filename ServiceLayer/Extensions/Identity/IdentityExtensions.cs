@@ -1,5 +1,6 @@
 ﻿using EntityLayer.Identity.Entities;
 using EntityLayer.Identity.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -8,6 +9,7 @@ using RepositoryLayer.Context;
 using ServiceLayer.Customization.Indentity.ErrorDescriber;
 using ServiceLayer.Customization.Indentity.Validators;
 using ServiceLayer.Helpers.Identity.EmailHelper;
+using ServiceLayer.Requirement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,6 +52,14 @@ namespace ServiceLayer.Extensions.Identity
             });
             services.AddScoped<IEmailSendMethod, EmailSendMethod>();
             services.Configure<GmailInformationsVM>(config.GetSection("EmailSettings"));
+            services.AddScoped<IAuthorizationHandler,AdminObserverRequirementHandler>();
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminObserver", policy =>
+                {
+                    policy.AddRequirements(new AdminObserverRequirement());
+                });
+            });
             return services;
         }
     }

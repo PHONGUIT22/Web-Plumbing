@@ -9,7 +9,7 @@ using ServiceLayer.Services.WebApplication.Abstract;
 
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "SuperAdmin")]
+    [Authorize(Policy = "AdminObserver")]
     [Area("Admin")]
     public class CategoryController : Controller
     {
@@ -65,7 +65,7 @@ namespace YouTube.Plumbing.Areas.Admin.Controllers
             validation.AddToModelState(this.ModelState);
             return View();
         }
-
+        [Authorize(Roles = "SuperAdmin")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
             await _categoryService.DeleteCategoryAsync(id);
