@@ -31,7 +31,13 @@ namespace ServiceLayer.Requirement
                 context.Succeed(requirement);
                 return;
             }
-            var cookieExpireDate = Convert.ToDateTime(context.User.FindFirst("AdminObserverExpireDate")!.Value);
+            var claim = context.User.FindFirst("AdminObserverExpireDate");
+            if (claim == null) 
+            {
+                context.Fail();
+                return;
+            }
+            var cookieExpireDate = Convert.ToDateTime(claim.Value);
             if (DateTime.Now < cookieExpireDate)
             {
                 context.Succeed(requirement);
