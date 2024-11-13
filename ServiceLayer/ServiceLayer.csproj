@@ -17,7 +17,6 @@
 		<Folder Include="Filters\Identity\" />
 		<Folder Include="Helpers\WebApplication\" />
 		<Folder Include="Messages\Identity\" />
-		<Folder Include="Middlewares\Identity\" />
 		<Folder Include="Middlewares\WebApplication\" />
 		<Folder Include="test\" />
 	</ItemGroup>

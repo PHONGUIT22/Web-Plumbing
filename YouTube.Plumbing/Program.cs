@@ -1,6 +1,7 @@
 using RepositoryLayer.Extensions;
 using ServiceLayer.Extensions;
 using NToastNotify;
+using ServiceLayer.Middlewares.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -27,7 +28,7 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseMiddleware<SecurityStampCheck>();
 #pragma warning disable ASP0014
 
 app.UseEndpoints(endpoints =>

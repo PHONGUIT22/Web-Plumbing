@@ -69,8 +69,14 @@ namespace YouTube.Plumbing.Controllers
 
 
         [HttpGet]
-        public IActionResult LogIn()
+        public IActionResult LogIn(string? errorMessage)
         {
+            if(errorMessage != null)
+            {
+                ViewBag.Result = "NotSucced";
+                ModelState.AddModelErrorList(new List<string> { errorMessage });
+                return View();
+            }
             return View();
         }
         [HttpPost]
