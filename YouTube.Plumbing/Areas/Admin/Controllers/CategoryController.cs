@@ -10,6 +10,7 @@ using ServiceLayer.Services.WebApplication.Abstract;
 namespace YouTube.Plumbing.Areas.Admin.Controllers
 {
     [Authorize(Policy = "AdminObserver")]
+    [Authorize(Roles = "SuperAdmin")]
     [Area("Admin")]
     public class CategoryController : Controller
     {

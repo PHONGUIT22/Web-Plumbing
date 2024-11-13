@@ -11,6 +11,7 @@ using System.Security.Claims;
 namespace Web.Plumbing.Areas.Admin.Controllers
 {
     [Authorize(Policy = "AdminObserver")]
+    [Authorize(Roles = "SuperAdmin")]
     [Area("Admin")]
     public class AdminController : Controller
     {
