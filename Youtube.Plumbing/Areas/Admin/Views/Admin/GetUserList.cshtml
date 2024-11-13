@@ -43,7 +43,7 @@
                         {
                             if (Convert.ToDateTime(item.UserClaims.FirstOrDefault()!.Value) < DateTime.Now)
                             {
-                                <td><a asp-area="Admin" asp-controller="Admin" asp-action="ExtendClaim" class="btn btn-warning btn-sm">Extend for 5 days</a></td>
+                                <td><a asp-area="Admin" asp-controller="Admin" asp-action="ExtendClaim" asp-route-username="@item.UserName" class="btn btn-warning btn-sm">Extend for 5 days</a></td>
                             }
                             else
                             {

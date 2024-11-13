@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NToastNotify;
+using System.Security.Claims;
 
 namespace Web.Plumbing.Areas.Admin.Controllers
 {
@@ -14,11 +16,12 @@ namespace Web.Plumbing.Areas.Admin.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IMapper _mapper;
-
-        public AdminController(UserManager<AppUser> userManager, IMapper mapper)
+        private readonly IToastNotification _toasty;
+        public AdminController(UserManager<AppUser> userManager, IMapper mapper, IToastNotification toasty)
         {
             _userManager = userManager;
             _mapper = mapper;
+            _toasty = toasty;
         }
 
         public async Task<IActionResult> GetUserList()
@@ -34,6 +37,15 @@ namespace Web.Plumbing.Areas.Admin.Controllers
 
             }
             return View(userListVM);
+        }
+        public async Task<IActionResult> ExtendClaim(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            var claims = await _userManager.GetClaimsAsync(user!);
+            var existingClaim = claims.FirstOrDefault(x => x.Type.Contains("Observer"));
+            var newExtendedClaim = new Claim("AdminObserverExpireDate", DateTime.Now.AddDays(5).ToString());
+            var renewClaim = await _userManager.ReplaceClaimAsync(user!,existingClaim!,newExtendedClaim);
+            return RedirectToAction("GetUserList", "Admin", new { Area = "Admin" });
         }
     }
 }
