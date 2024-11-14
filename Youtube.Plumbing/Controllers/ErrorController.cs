@@ -20,6 +20,9 @@ namespace Web.Plumbing.Controllers
                 return View(new ErrorVM("You have to delete all relevant data before to move on",401));
             return View(new ErrorVM("SV error, contact to admin",500));
         }
-
+        public IActionResult PageNotFound()
+        {
+            return View();
+        } 
     }
 }

@@ -2,6 +2,7 @@ using RepositoryLayer.Extensions;
 using ServiceLayer.Extensions;
 using NToastNotify;
 using ServiceLayer.Middlewares.Identity;
+using Microsoft.AspNetCore.Builder;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,7 +22,8 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
-
+app.UseStatusCodePagesWithRedirects("/Error/PageNotFound");
+// app.UseStatusCodePagesWithReExecute("/Error/NotFound");
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
