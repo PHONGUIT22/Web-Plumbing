@@ -62,5 +62,12 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             _repository.UpdateEntity(homePage);
             await _unitOfWorks.CommitAsync();
         }
+        //UI service methods
+        public async Task<List<HomePageVMForUI>> GetAllListForUI()
+        {
+            var homePageListVMForUI = await _repository.GetAllEntityList().ProjectTo<HomePageVMForUI>
+            (_mapper.ConfigurationProvider).ToListAsync();
+            return homePageListVMForUI;
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace ServiceLayer.Services.WebApplication.Abstract
         Task DeleteHomePageAsync(int id);
         Task<HomePageUpdateVM> GetHomePageById(int id);
         Task UpdateHomePageAsync(HomePageUpdateVM request);
+        Task<List<HomePageVMForUI>> GetAllListForUI();
     }
 }
