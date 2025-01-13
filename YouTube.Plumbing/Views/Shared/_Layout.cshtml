@@ -47,7 +47,7 @@
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
                     @if (User.Identity!.IsAuthenticated)
                     {
-                        <li><a class="getstarted scrollto">@User.Identity.Name</a></li>
+                        <li><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" class="getstarted scrollto">@User.Identity.Name</a></li>
                     }
                     else
                     {

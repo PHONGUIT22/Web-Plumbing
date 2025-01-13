@@ -89,5 +89,12 @@ namespace ServiceLayer.Services.WebApplication.Concrete
                 _imageHelper.DeleteImage(oldPortfolio.FileName);
             }
         }
+
+        public async Task<List<PortfolioListForUI>> GetAllListForUIAsync()
+        {
+            var portfolioListForUI = await _repository.GetAllEntityList().ProjectTo<PortfolioListForUI>
+            (_mapper.ConfigurationProvider).ToListAsync();
+            return portfolioListForUI;
+        }
     }
 }

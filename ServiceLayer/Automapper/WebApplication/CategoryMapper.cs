@@ -17,6 +17,8 @@ namespace ServiceLayer.Automapper.WebApplication
             CreateMap<Category, CategoryListVM>().ReverseMap();
             CreateMap<Category, CategoryAddVM>().ReverseMap();
             CreateMap<Category, CategoryUpdateVM>().ReverseMap();
+            CreateMap<Category, CategoryListForUI>().ReverseMap();
+
         }
     }
 }
