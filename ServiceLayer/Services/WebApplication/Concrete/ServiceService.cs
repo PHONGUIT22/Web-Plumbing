@@ -62,5 +62,12 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             _repository.UpdateEntity(service);
             await _unitOfWorks.CommitAsync();
         }
+
+        public async Task<List<ServiceListForUI>> GetAllListForUIAsync()
+        {
+            var serviceListForUI = await _repository.GetAllEntityList().ProjectTo<ServiceListForUI>
+           (_mapper.ConfigurationProvider).ToListAsync();
+            return serviceListForUI;
+        }
     }
 }

@@ -14,5 +14,6 @@ namespace ServiceLayer.Services.WebApplication.Abstract
         Task DeleteServiceAsync(int id);
         Task<ServiceUpdateVM> GetServiceById(int id);
         Task UpdateServiceAsync(ServiceUpdateVM request);
+        Task<List<ServiceListForUI>> GetAllListForUIAsync();
     }
 }

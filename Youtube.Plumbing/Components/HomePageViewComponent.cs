@@ -13,7 +13,7 @@ namespace Web.Plumbing.Components
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var homePageList = await _homePageService.GetAllListForUI();
+            var homePageList = await _homePageService.GetAllListForUIAsync();
             return View(homePageList);
         }
     }

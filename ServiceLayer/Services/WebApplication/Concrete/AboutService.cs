@@ -92,5 +92,13 @@ namespace ServiceLayer.Services.WebApplication.Concrete
                 _imageHelper.DeleteImage(oldAbout.FileName);
             }
         }
+
+        //UI
+        public async Task<List<AboutListVMForUI>> GetAllListForUIAsync()
+        {
+            var aboutListForUI = await _repository.GetAllEntityList().ProjectTo<AboutListVMForUI>
+            (_mapper.ConfigurationProvider).ToListAsync();
+            return aboutListForUI;
+        }
     }
 }

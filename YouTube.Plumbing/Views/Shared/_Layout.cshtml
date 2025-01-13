@@ -59,7 +59,7 @@
 
         </div>
   </header><!-- End Header -->
-@await Component.InvokeAsync("HomePage");
+            @await Component.InvokeAsync("HomePage");
 
   <main id="main">
        @RenderBody()
@@ -83,6 +83,8 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/purecounterjs/1.1.0/purecounter.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 
