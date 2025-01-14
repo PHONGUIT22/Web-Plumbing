@@ -62,5 +62,12 @@ namespace ServiceLayer.Services.WebApplication.Concrete
             _repository.UpdateEntity(category);
             await _unitOfWorks.CommitAsync();
         }
+
+        public async Task<List<CategoryListForUI>> GetAllListForUIAsync()
+        {
+            var categoryListForUI = await _repository.GetAllEntityList().ProjectTo<CategoryListForUI>
+            (_mapper.ConfigurationProvider).ToListAsync();
+            return categoryListForUI;
+        }
     }
 }
