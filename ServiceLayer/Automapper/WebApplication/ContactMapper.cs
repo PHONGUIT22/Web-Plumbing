@@ -17,6 +17,8 @@ namespace ServiceLayer.Automapper.WebApplication
             CreateMap<Contact, ContactListVM>().ReverseMap();
             CreateMap<Contact, ContactAddVM>().ReverseMap();
             CreateMap<Contact, ContactUpdateVM>().ReverseMap();
+            CreateMap<Contact, ContactListForUI>().ReverseMap();
+
         }
     }
 }
