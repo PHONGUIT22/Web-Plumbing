@@ -89,5 +89,12 @@ namespace ServiceLayer.Services.WebApplication.Concrete
                 _imageHelper.DeleteImage(oldTeam.FileName);
             }
         }
+
+        public async Task<List<TeamListForUI>> GetTeamListForUIAsync()
+        {
+            var teamListForUI = await _repository.GetAllEntityList().ProjectTo<TeamListForUI>
+            (_mapper.ConfigurationProvider).ToListAsync();
+            return teamListForUI;
+        }
     }
 }

@@ -90,5 +90,12 @@ namespace ServiceLayer.Services.WebApplication.Concrete
                 _imageHelper.DeleteImage(oldTestimonial.FileName);
             }
         }
+
+        public async Task<List<TestimonialListForUI>> GetAllListForUIAsync()
+        {
+            var testimonialListForUI = await _repository.GetAllEntityList().ProjectTo<TestimonialListForUI>
+            (_mapper.ConfigurationProvider).ToListAsync();
+            return testimonialListForUI;
+        }
     }
 }

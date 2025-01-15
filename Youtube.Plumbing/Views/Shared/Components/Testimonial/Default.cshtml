@@ -1,0 +1,37 @@
+﻿@model List<TestimonialListForUI>
+
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <span>Testimonials</span>
+            <h2>Testimonials</h2>
+        </div>
+
+        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+            <div class="swiper-wrapper">
+                @foreach(var item in Model)
+                {
+                    <div class="swiper-slide">
+                        <div class="testimonial-item">
+                            <p>
+                                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                                @item.Comment
+                                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+                            </p>
+                            <img src="~/images/@item.FileName" class="testimonial-img" alt="Testimonials">
+                            <h3>@item.FullName</h3>
+                            <h4>@item.Title</h4>
+                        </div>
+                    </div>
+
+                    <!-- End testimonial item -->
+                }
+
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+</section><!-- End Testimonials Section -->

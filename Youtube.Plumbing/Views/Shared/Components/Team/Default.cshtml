@@ -1,0 +1,49 @@
+﻿@using EntityLayer.WebApplication.ViewModels.Team
+@model List<TeamListForUI>
+<!-- ======= Team Section ======= -->
+<section id="team" class="team section-bg">
+    <div class="container">
+
+        <div class="section-title">
+            <span>Team</span>
+            <h2>Team</h2>
+        </div>
+        <div class="row">
+        @foreach(var item in Model)
+        {
+            
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <img src="~/images/@item.FileName" style="height:300px; width: 200px;" alt="">
+                        <h4>@item.FullName</h4>
+                        <span>@item.Title</span>
+                        <div class="social">
+                            @if(item.Twitter != null || item.Twitter == string.Empty)
+                            {
+                                <a href="@item.Twitter"><i class="bi bi-twitter"></i></a>
+
+                            }
+                            @if (item.FaceBook != null || item.FaceBook == string.Empty)
+                            {
+                                <a href="@item.FaceBook"><i class="bi bi-facebook"></i></a>
+
+                            }
+                            @if (item.Instagram != null || item.Instagram == string.Empty)
+                            {
+                                <a href="@item.Instagram"><i class="bi bi-instagram"></i></a>
+
+                            }
+                            @if (item.LinkedIn != null || item.LinkedIn == string.Empty)
+                            {
+                                <a href="@item.LinkedIn"><i class="bi bi-linkedin"></i></a>
+
+                            }
+                            
+                        </div>
+                    </div>
+                </div>
+            
+        }
+        </div>
+    </div>
+</section><!-- End Team Section -->
